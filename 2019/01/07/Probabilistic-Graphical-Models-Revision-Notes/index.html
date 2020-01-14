@@ -98,7 +98,27 @@
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/84.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/83.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/85.png">
-<meta property="og:updated_time" content="2019-10-27T21:31:12.295Z">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/86.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/87.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/88.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/89.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/90.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/91.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/92.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/92.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/93.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/94.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/95.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/96.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/97.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/98.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/99.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/100.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/101.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/102.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/103.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/104.png">
+<meta property="og:updated_time" content="2020-01-14T23:49:43.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Probabilistic Graphical Models Revision Notes">
 <meta name="twitter:description" content="[Last Updated: 2019.10.27]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
@@ -261,7 +281,19 @@
 </li>
 </ul>
 </li>
-<li><strong><a href="#learning">Learning</a></strong></li>
+<li><strong><a href="#learning">Learning</a></strong><ul>
+<li><a href="#belief_propagation_algorithms">Belief Propagation Algorithms</a><ul>
+<li><a href="#message_passing_in_cluster_graphs">Message Passing in Cluster Graphs</a><ul>
+<li><a href="#belief_propagation_algorithms_2">Belief Propagation Algorithm</a></li>
+<li><a href="#properties_of_cluster_graphs">Properties of Cluster Graphs</a></li>
+<li><a href="#properties_of_belife_propagation">Properties of Belief Propagation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#clique_trees">Clique Trees (faster and exact answer of inference)</a></li>
+</ul>
+</li>
 </ul>
 <p><strong><a href="#tableofcontents">Back to Table of Contents</a></strong></p>
 <hr>
@@ -678,12 +710,92 @@
 <li>Simple heuristics that try to keep induced graph small often provide reasonable performance.</li>
 </ul>
 <p><a href="#tableofcontents">Back to Table of Contents</a></p>
-<h3 id="Learning"><a href="#Learning" class="headerlink" title=" Learning"></a><a name="learning"></a> Learning</h3><p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h3 id="Learning"><a href="#Learning" class="headerlink" title=" Learning"></a><a name="learning"></a> Learning</h3><h4 id="Belief-Propagation-Algorithms"><a href="#Belief-Propagation-Algorithms" class="headerlink" title=" Belief Propagation Algorithms"></a><a name="belief_propagation_algorithms"></a> Belief Propagation Algorithms</h4><h5 id="Message-Passing-in-Cluster-Graphs"><a href="#Message-Passing-in-Cluster-Graphs" class="headerlink" title=" Message Passing in Cluster Graphs"></a><a name="message_passing_in_cluster_graphs"></a> Message Passing in Cluster Graphs</h5><p>Build a cluster graph:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/86.png" alt="Example"><br>Passing Messages:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/87.png" alt="Example"><br>Each cluster is going to send messages to its adjacent clusters that reflect the same process as above.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/88.png" alt="Example"></p>
+<p><strong><em>Cluster Graphs (Generalisation Definition)</em></strong></p>
+<ul>
+<li><p>Undirected graph</p>
+<ul>
+<li>Nodes: clusters $C_i\subseteq{X_1,…,X_n}$. $C_i$ is a subset of variables</li>
+<li>Edges: between $C_i$ and $C_j$ associated with subset $S_{i,j} \subseteq C_i \cap C_j$. $S_{i,j}$ is the variables that they talk about</li>
+</ul>
+</li>
+<li><p>Given a set of factors $\Phi$, assign each $\phi_k$ to a cluster $C_{\alpha(k)}$ (one and only one cluster) s.t. Scope[$\phi_k$] $\subseteq C_{\alpha(k)}$ (a subset of $C_{\alpha(k)}$)</p>
+</li>
+<li><p>Define $\psi_i(C_i)=\prod_{k:\alpha(k)=i}\phi_k$</p>
+<ul>
+<li>define a initial belief of a particular cluster the product of all factors that assigned to it</li>
+<li>and some clusters might not have have factors assigned to them, in this case equal to 1.</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Example Cluster Graph</em></strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/89.png" alt="Example"><br>Initially we have to figure out for each of those factors a cluster in which to put it.</p>
+<ul>
+<li>For A,B,C: there is only one choice because there is only one cluster in the enitre graph that understands abouts all of A, B and C.</li>
+<li>For B,C: however, it has two choinces. It can go into cluster one or two. Both are fine.</li>
+<li>For B,D: also has two choinces.</li>
+<li>For D,E and B,E: they only have one choice.</li>
+<li>For B,D: it has 2 choices.</li>
+<li>For B,D,F: there is only one choice.<br>This is one possible way of assigning the cluster, the factor Flow of Probabilistic Influence (Active Trial)</li>
+</ul>
+<p><strong>When can X influence Y (condition on X can change the beliefs\probablities of Y)?</strong></p>
+<p>X <strong>CAN</strong> influence Y:<br>$X\rightarrow Y$,<br>$X\leftarrow Y$<br>$X\rightarrow W \rightarrow Y$<br>$X\leftarrow W \leftarrow Y$<br>$X\leftarrow W \rightarrow Y$</p>
+<p>X <strong>CANNOT</strong> influence Y:<br>$X\rightarrow W \leftarrow Y$ (V Structure)</p>
+<p><em>Active Trails</em><br>A trial $X_1-X_2-…-X_n$ is active if it has tno clusters.</p>
+<p><em>Different Cluster Graph</em><br>For the exact same set of factors, the clusters have not changed, but the edge changes.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/90.png" alt="Example"></p>
+<p><strong><em>Message Passing</em></strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/91.png" alt="Example"><br>General:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/92.png" alt="General"></p>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h6 id="Belief-Propagation-Algorithm"><a href="#Belief-Propagation-Algorithm" class="headerlink" title=" Belief Propagation Algorithm"></a><a name="belief_propagation_algorithms_2"></a> Belief Propagation Algorithm</h6><ul>
+<li>Assign each factor $\phi_k\in\Phi$ to a cluster $C_{\alpha(k)}$</li>
+<li>Construct initial potentials $\Psi_i(C_i)=\prod_{k:\alpha(k)=i}\phi_k$</li>
+<li>Initialise all messages to be 1</li>
+<li>Repeat: (<strong>until When and how to select edge - different variants of algorithms will be described later on)</strong><ul>
+<li>select edge (i,j) and pass message. $N_i$ is the neighbour.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/92.png" alt="Example"></li>
+</ul>
+</li>
+<li>Compute, belief of this cluster, $\beta_i(C_i) = \Psi_i \times \prod_{k\in N_i} \delta_{k \to i}$. $N_i$ is all the neighbors.</li>
+</ul>
+<p><em>Belief propagation run (approximate)</em><br>Example:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/93.png" alt="Example"><br>The resulting beliefs are pseudo-marginals, but the algorithm actually performs well in a range of practical applications.</p>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h6 id="Properties-of-Cluster-Graphs"><a href="#Properties-of-Cluster-Graphs" class="headerlink" title=" Properties of Cluster Graphs"></a><a name="properties_of_cluster_graphs"></a> Properties of Cluster Graphs</h6><p><strong><em>Family Preservation</em></strong><br>Given a set of factors $\Phi$, we assign each $\phi_k$ to a cluster $C_{\alpha(k)}$, s.t. Scope[$\phi_k$]$\in C_{\alpha(k)}$<br>For each factor $\phi_k$ in $\Phi$, there exists a cluster $C_i$ s.t. Scope[$\phi_k$] $\subseteq C_i$</p>
+<p><strong><em>Runing Itersection Property</em></strong><br>For each pair of clusters $C_i$ and $C_j$, and variable $X\in C_i\cap C_j$, there exists a unique path between $C_i$ and $C_j$ for which all clusters and sepsets (edge) contain X.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/94.png" alt="Example"></p>
+<p>Alternative defination of Running Itersection Property —- Equivalently: for any variable X, the set of clusters and sepsets (edges) containing X from a tree. (each variable inducing its own little tree across which information about that variable flows in the graph.)<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/95.png" alt="Example"></p>
+<p>If X and Y are very strongly correlated, BP does poorly when have sharing parameters, due to the feedback loops. The more skewed the probabilities in your graphical mode, the harder time belief propagation has in terms of the results that it gets.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/96.png" alt="Example"></p>
+<p><em>Examples of Illegal Cluster Graphs:</em><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/97.png" alt="Example"></p>
+<p>For B, there is no way to connect the B in cluster 1 and 2 or 2 and 3. This graph violates the existence.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/98.png" alt="Example"></p>
+<p>This vailates the uniqueness. (the loop, 2 ways between cluster 1 and 4.)<br><em>Examples of Valid Graph:</em><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/99.png" alt="Examples of Valid Graph"></p>
+<p><strong><em>Bethe Cluster Graph</em></strong> (How to construct a cluster graph that has the desired properties?)</p>
+<ul>
+<li>Big Cluster: for each $\phi_k\in\Phi$, a factor cluster $C_k$ = Scope[$\phi_k$]</li>
+<li>Small Cluster: for each $X_i$ a singleton cluster {$X_i$} (variable)</li>
+<li>Edge $C_k$—-$X_i$ if $X_i\in C_k$<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/100.png" alt="Bethe Cluster Graph"></li>
+</ul>
+<p><strong><em>Summary</em></strong></p>
+<ul>
+<li>Cluster graph must satisfy:<ul>
+<li>family preservation: allow $\Phi$ to be encoded</li>
+<li>running intersection: connect all information about any variable, but without feedback loops</li>
+</ul>
+</li>
+<li>Bethe cluster graph is often first default</li>
+<li>Richer cluster graph stuctures (e.g., more edges) can offer different trade-offs. wrt. computational cost (increasing the amount of sizes of the messages that are passed that can grow more expensive) but at the same time imprve the preservation of dependencies as messages are passed in the graph so that more information is actually kept and not lost in this message passing process.</li>
+</ul>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h6 id="Properties-of-Belief-Propagation"><a href="#Properties-of-Belief-Propagation" class="headerlink" title=" Properties of Belief Propagation"></a><a name="properties_of_belife_propagation"></a> Properties of Belief Propagation</h6><p><strong><em>Calibration</em></strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/101.png" alt="Calibration"><br> A cluster graph is calibrated if every pair of adjacent clusters $C_i$ and $C_j$ agree on their sepset $S_{i,j}$:</p>
+<p> $\sum_{C_i-S_{ij}}\beta_i(C_i)=\sum_{C_j-S_{ij}}\beta_j(C_j)$. In other words, the marginilised beliefs are equal.</p>
+<p> <strong><em>Convergence ($\to$ Calibration)</em></strong><br> $\delta_{i\to j}(S_{ij})=\delta’_{i\to j}(S_{ij})$, equal the message at previous time step.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/102.png" alt="Convergence"><br>The expression above is corresponds to the sepset belief:<br>$\mu_{i,j}(S_{i,j})=\delta_{j\to i}\delta_{i\to j}=\sum_{C_j-S_{i,j}}\beta_j(C_j)$</p>
+<p><strong><em>Reparameterisation</em></strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/103.png" alt="Reparameterisation"><br>If we write in this form:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/104.png" alt="Reparameterisation"><br>It can be seen that it is simply the unnormalised measure. It implicates the term/ratio is simply a different set of parameters that captures the original un-normalised measure that defined our distribution.<br>Therefore, we have not lost information as a result of belief propagation algorithm. The distribution is still there, just a different set of parameters.</p>
+<p><strong><em>Summary</em></strong><br>Cluster graph beliefs are an alternative, calibrated, parametorisation of the original unnormalised density.</p>
+<ul>
+<li>No information is lost by message passing.</li>
+<li>Reparametorised the original distribution into a more convenient and easily usable form.</li>
+</ul>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h5 id="Clique-Trees-faster-and-exact-answer-of-inference"><a href="#Clique-Trees-faster-and-exact-answer-of-inference" class="headerlink" title=" Clique Trees (faster and exact answer of inference)"></a><a name="clique_trees"></a> Clique Trees (faster and exact answer of inference)</h5><p>A speical case of cluster graph which has the performance guarantee. (faster, exact answer of inference).</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck5binlk3000akwp0jj2q1980" class="article-share-link">Share</a>
+      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck5egaiq6000a0cp0k4hl5jur" class="article-share-link">Share</a>
       
         <a href="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/#disqus_thread" class="article-comment-link">Comments</a>
       
