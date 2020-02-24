@@ -5,12 +5,12 @@
   
   <title>Probabilistic Graphical Models Revision Notes | CreateMoMo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[Last Updated: 2019.10.27]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
+  <meta name="description" content="[Last Updated: 2020.02.23]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probabilistic Graphical Models Revision Notes">
 <meta property="og:url" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/index.html">
 <meta property="og:site_name" content="CreateMoMo">
-<meta property="og:description" content="[Last Updated: 2019.10.27]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
+<meta property="og:description" content="[Last Updated: 2020.02.23]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/1.jpg">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/2.jpg">
@@ -118,10 +118,13 @@
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/102.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/103.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/104.png">
-<meta property="og:updated_time" content="2020-01-14T23:49:43.536Z">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/105.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/106.png">
+<meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/107.png">
+<meta property="og:updated_time" content="2020-02-24T00:04:41.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Probabilistic Graphical Models Revision Notes">
-<meta name="twitter:description" content="[Last Updated: 2019.10.27]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
+<meta name="twitter:description" content="[Last Updated: 2020.02.23]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
 <meta name="twitter:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/1.jpg">
   
   
@@ -189,7 +192,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Last-Updated-2019-10-27"><a href="#Last-Updated-2019-10-27" class="headerlink" title="[Last Updated: 2019.10.27]"></a>[Last Updated: 2019.10.27]</h3><p>This note summarises the online course, <a href="https://www.coursera.org/specializations/probabilistic-graphical-models" target="_blank" rel="external">Probabilistic Graphical Models Specialization</a> on Coursera.<br><strong><strong>Any comments and suggestions are most welcome!</strong></strong><br><a id="more"></a></p>
+        <h3 id="Last-Updated-2020-02-23"><a href="#Last-Updated-2020-02-23" class="headerlink" title="[Last Updated: 2020.02.23]"></a>[Last Updated: 2020.02.23]</h3><p>This note summarises the online course, <a href="https://www.coursera.org/specializations/probabilistic-graphical-models" target="_blank" rel="external">Probabilistic Graphical Models Specialization</a> on Coursera.<br><strong><strong>Any comments and suggestions are most welcome!</strong></strong><br><a id="more"></a></p>
 <hr>
 <h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a><a name="tableofcontents"></a>Table of Contents</h2><ul>
 <li><strong><a href="#representations">Representations</a></strong><ul>
@@ -264,7 +267,7 @@
 <li><a href="#max_product">Max-Product</a></li>
 </ul>
 </li>
-<li><strong><a href="#variable_elimination">Variable Elimination</a></strong><ul>
+<li><strong><a href="#variable_elimination">Variable Elimination (Computing Conditional Probabilities, Exact Inference)</a></strong><ul>
 <li><a href="#variable_elimination_algorithm">Variable Elimination Algorithm</a><ul>
 <li><a href="#elimination_in_chains">Elimination in Chains</a></li>
 <li><a href="#elimination_in_complicated_bn">Elimination in a more complicated BN</a></li>
@@ -277,23 +280,81 @@
 <li><a href="#graph_based_perspective_on_variable_elimination">Graph-based Perspective on Variable Elimination</a></li>
 <li><a href="#finding_elimination_ordering">Finding Elimination Orderings</a></li>
 <li><a href="#variable_elimination_summary">Variable Elimination (Summary)</a></li>
+<li><strong><a href="#belief_propagation_algorithms">Belief Propagation Algorithms (Computing Conditional Probabilities, Exact Inference)</a></strong></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><strong><a href="#learning">Learning</a></strong><ul>
-<li><a href="#belief_propagation_algorithms">Belief Propagation Algorithms</a><ul>
 <li><a href="#message_passing_in_cluster_graphs">Message Passing in Cluster Graphs</a><ul>
 <li><a href="#belief_propagation_algorithms_2">Belief Propagation Algorithm</a></li>
 <li><a href="#properties_of_cluster_graphs">Properties of Cluster Graphs</a></li>
 <li><a href="#properties_of_belife_propagation">Properties of Belief Propagation</a></li>
 </ul>
 </li>
+<li><a href="#clique_trees">Clique Trees (faster and exact answer of inference)</a><ul>
+<li><a href="#message_passing_in_trees">Message Passing in Trees</a></li>
+<li><a href="#message_passing_in_trees_computation">Computation</a></li>
+<li><a href="#clique_tree_and_independence">Clique Tree and Independence</a></li>
+<li><a href="#clique_tree_and_variable_elimination">Clique Tree and Variable Elimination</a></li>
 </ul>
 </li>
-<li><a href="#clique_trees">Clique Trees (faster and exact answer of inference)</a></li>
+<li><a href="#loopy_belief_propagation">Loopy Belief Propagation</a><ul>
+<li><a href="#belief_propagation_in_practice">Belief Propagation In Practice</a></li>
+<li><a href="#loopy_belief_propagation_and_message_decoding">Loopy Belief Propagation and Message Decoding</a></li>
+<li><strong><a href="#map_algorithms">MAP Algorithms (Finding The Most Likely Assignment)</a></strong></li>
 </ul>
 </li>
+<li><a href="#map_message_passing">MAP Message Passing</a><ul>
+<li><a href="#max_sum_message_passing">Max Sum Message Passing</a></li>
+<li><a href="#finding_a_map_assignment">Finding a MAP Assignment</a></li>
+</ul>
+</li>
+<li><a href="#other_map_algorithms">Other MAP Algorithms</a><ul>
+<li><a href="#tractable_map_problems">Tractable MAP Problems</a></li>
+<li><a href="#dual_decomposition_intuition">Dual Decomposition - Intuition</a></li>
+<li><a href="#dual_decomposition_algorithm">Dual Decomposition - Algorithm</a>  </li>
+<li><strong><a href="#sampling_methods">Sampling Methods (Using Random Sampling to Provide Approximate Conditional Probability)</a></strong></li>
+</ul>
+</li>
+<li><a href="#simple_sampling">Simple Sampling</a></li>
+<li><a href="#markov_chain_monte_carlo">Markov Chain Monte Carlo</a></li>
+<li><a href="#using_a_markov_chain">Using a Markov Chain</a></li>
+<li><a href="#gibbs_sampling">Gibbs Sampling</a></li>
+<li><a href="#metropolis_hastings_algorithm">Metropolis Hastings Algorithm</a>  <ul>
+<li><strong><a href="#inference_in_temporal_models">Inference in Temporal Models</a></strong></li>
+<li><strong><a href="#inference_summary">Summary</a></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><a href="#learning">Learning</a></strong><ul>
+<li><strong><a href="#learning_overview">Overview</a></strong></li>
+<li><strong><a href="#parameter_estimated_in_bayesian_networks">Parameter Estimation in Bayesian Networks</a></strong><ul>
+<li><a href="#maximum_likelihood_parameter_estimation_in_bns">Maximum Likelihood Parameter Estimation in BNs</a></li>
+<li><a href="#bayesian_parameter_estimation_for_bns">Bayesian Parameter Estimation for BNs (Estimation and Prediction)</a></li>
+</ul>
+</li>
+<li><strong><a href="#learning_undirected_models">Learning Undirected Models (Parameter Estimation in MNs)</a></strong><ul>
+<li><a href="#maximum_likelihood_for_log_linear_models">Maximum Likelihood for Log-Linear Models</a></li>
+<li><a href="#maximum_likelihood_for_conditional_random_fields">Maximum Likelihood for Conditional Random Fields</a></li>
+<li><a href="#map_estimation_for_mrfs_and_crfs">MAP Estimation for MRFs and CRFs</a></li>
+</ul>
+</li>
+<li><strong><a href="#learning_bn_structure">Learning BN Structure</a></strong><ul>
+<li><a href="#structure_learning_overview_and_scoring_functions">Structure Learning: Overview and Scoring Functions</a></li>
+<li><a href="#searching_over_structures">Searching Over Structures</a></li>
+</ul>
+</li>
+<li><strong><a href="#learning_bns_with_incomplete_data">Learning BNs with Incomplete Data</a></strong><ul>
+<li><a href="#learning_bns_with_incomplete_data_overview">Overview</a></li>
+<li><a href="#expectation_maximisation_introduction">Expectation Maximisation - Introduction</a></li>
+<li><a href="#analysis_of_em_algorithm">Analysis of EM Algorithm</a></li>
+<li><a href="#em_in_practice">EM in Practice</a></li>
+<li><a href="#latent_variables">Latent Variables</a></li>
+</ul>
+</li>
+<li><strong><a href="#learning_summary">Summary</a></strong></li>
+</ul>
+</li>
+<li><strong><a href="#final_summary">Summary</a></strong></li>
 </ul>
 <p><strong><a href="#tableofcontents">Back to Table of Contents</a></strong></p>
 <hr>
@@ -791,11 +852,32 @@
 </ul>
 <p><a href="#tableofcontents">Back to Table of Contents</a></p>
 <h5 id="Clique-Trees-faster-and-exact-answer-of-inference"><a href="#Clique-Trees-faster-and-exact-answer-of-inference" class="headerlink" title=" Clique Trees (faster and exact answer of inference)"></a><a name="clique_trees"></a> Clique Trees (faster and exact answer of inference)</h5><p>A speical case of cluster graph which has the performance guarantee. (faster, exact answer of inference).</p>
+<h6 id="Message-Passing-in-Trees"><a href="#Message-Passing-in-Trees" class="headerlink" title=" Message Passing in Trees"></a><a name="message_passing_in_trees"></a> Message Passing in Trees</h6><p>A simple example tree:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/105.png" alt="Example"><br>As you can see, we have marginalised out in a legal order.</p>
+<p><strong>Clique Tree:</strong><br>Undirected tree such that:</p>
+<ul>
+<li>nodes are clusters $C_i\subseteq{X_1…X_n}$</li>
+<li>edge between $C_i$ and $C_j$ associated with sepset $S_ij=C_i\cap C_j$<br>(For each pair of clusters $C_i$ and $C_j$, and variable $X\in C_i\cap C_j$, in the unique path between $C_i$ and $C_j$, all clusters and sepsets contain X)</li>
+</ul>
+<p><strong>More Complex Clique Tree:</strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/106.png" alt="Example"></p>
+<p><strong>Clique Tree Correctness:</strong></p>
+<ul>
+<li>If X is eliminated when we pass the message $C_i \to C_j$</li>
+<li>Then X does not appear in the $C_j$ side of tree</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<ul>
+<li>In this case, computation is a variant of variable elimination</li>
+<li>Resulting beliefs are guaranteed to be correct marginals</li>
+</ul>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
+<h6 id="Computation"><a href="#Computation" class="headerlink" title=" Computation"></a><a name="message_passing_in_trees_computation"></a> Computation</h6><p><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/107.png" alt="Message Passing"><br>We can compute all of the messages in this entire tree in one paths in either direction. One path is from left to right and one path from right to left. In the context of chain structures, you might see this under the name <strong>forward-backward algorithm</strong>. This is very commonly used in things like the hidden Markov model and other similar chain structured representations.</p>
+<p>Once …</p>
+<p><a href="#tableofcontents">Back to Table of Contents</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck6vhvx75000bukp00mg8753t" class="article-share-link">Share</a>
+      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck6zp9efa00072sp06wmg1e5i" class="article-share-link">Share</a>
       
         <a href="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/#disqus_thread" class="article-comment-link">Comments</a>
       
