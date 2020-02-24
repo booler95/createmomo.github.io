@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/105.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/106.png">
 <meta property="og:image" content="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/107.png">
-<meta property="og:updated_time" content="2020-02-24T00:04:41.514Z">
+<meta property="og:updated_time" content="2020-02-24T00:14:02.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Probabilistic Graphical Models Revision Notes">
 <meta name="twitter:description" content="[Last Updated: 2020.02.23]This note summarises the online course, Probabilistic Graphical Models Specialization on Coursera.Any comments and suggestions are most welcome!">
@@ -280,9 +280,9 @@
 <li><a href="#graph_based_perspective_on_variable_elimination">Graph-based Perspective on Variable Elimination</a></li>
 <li><a href="#finding_elimination_ordering">Finding Elimination Orderings</a></li>
 <li><a href="#variable_elimination_summary">Variable Elimination (Summary)</a></li>
-<li><strong><a href="#belief_propagation_algorithms">Belief Propagation Algorithms (Computing Conditional Probabilities, Exact Inference)</a></strong></li>
 </ul>
 </li>
+<li><strong><a href="#belief_propagation_algorithms">Belief Propagation Algorithms (Computing Conditional Probabilities, Exact Inference)</a></strong><ul>
 <li><a href="#message_passing_in_cluster_graphs">Message Passing in Cluster Graphs</a><ul>
 <li><a href="#belief_propagation_algorithms_2">Belief Propagation Algorithm</a></li>
 <li><a href="#properties_of_cluster_graphs">Properties of Cluster Graphs</a></li>
@@ -299,9 +299,11 @@
 <li><a href="#loopy_belief_propagation">Loopy Belief Propagation</a><ul>
 <li><a href="#belief_propagation_in_practice">Belief Propagation In Practice</a></li>
 <li><a href="#loopy_belief_propagation_and_message_decoding">Loopy Belief Propagation and Message Decoding</a></li>
-<li><strong><a href="#map_algorithms">MAP Algorithms (Finding The Most Likely Assignment)</a></strong></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><strong><a href="#map_algorithms">MAP Algorithms (Finding The Most Likely Assignment)</a></strong><ul>
 <li><a href="#map_message_passing">MAP Message Passing</a><ul>
 <li><a href="#max_sum_message_passing">Max Sum Message Passing</a></li>
 <li><a href="#finding_a_map_assignment">Finding a MAP Assignment</a></li>
@@ -311,18 +313,20 @@
 <li><a href="#tractable_map_problems">Tractable MAP Problems</a></li>
 <li><a href="#dual_decomposition_intuition">Dual Decomposition - Intuition</a></li>
 <li><a href="#dual_decomposition_algorithm">Dual Decomposition - Algorithm</a>  </li>
-<li><strong><a href="#sampling_methods">Sampling Methods (Using Random Sampling to Provide Approximate Conditional Probability)</a></strong></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><strong><a href="#sampling_methods">Sampling Methods (Using Random Sampling to Provide Approximate Conditional Probability)</a></strong><ul>
 <li><a href="#simple_sampling">Simple Sampling</a></li>
 <li><a href="#markov_chain_monte_carlo">Markov Chain Monte Carlo</a></li>
 <li><a href="#using_a_markov_chain">Using a Markov Chain</a></li>
 <li><a href="#gibbs_sampling">Gibbs Sampling</a></li>
-<li><a href="#metropolis_hastings_algorithm">Metropolis Hastings Algorithm</a>  <ul>
-<li><strong><a href="#inference_in_temporal_models">Inference in Temporal Models</a></strong></li>
-<li><strong><a href="#inference_summary">Summary</a></strong></li>
+<li><a href="#metropolis_hastings_algorithm">Metropolis Hastings Algorithm</a>  </li>
 </ul>
 </li>
+<li><strong><a href="#inference_in_temporal_models">Inference in Temporal Models</a></strong></li>
+<li><strong><a href="#inference_summary">Summary</a></strong></li>
 </ul>
 </li>
 <li><strong><a href="#learning">Learning</a></strong><ul>
@@ -771,7 +775,7 @@
 <li>Simple heuristics that try to keep induced graph small often provide reasonable performance.</li>
 </ul>
 <p><a href="#tableofcontents">Back to Table of Contents</a></p>
-<h3 id="Learning"><a href="#Learning" class="headerlink" title=" Learning"></a><a name="learning"></a> Learning</h3><h4 id="Belief-Propagation-Algorithms"><a href="#Belief-Propagation-Algorithms" class="headerlink" title=" Belief Propagation Algorithms"></a><a name="belief_propagation_algorithms"></a> Belief Propagation Algorithms</h4><h5 id="Message-Passing-in-Cluster-Graphs"><a href="#Message-Passing-in-Cluster-Graphs" class="headerlink" title=" Message Passing in Cluster Graphs"></a><a name="message_passing_in_cluster_graphs"></a> Message Passing in Cluster Graphs</h5><p>Build a cluster graph:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/86.png" alt="Example"><br>Passing Messages:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/87.png" alt="Example"><br>Each cluster is going to send messages to its adjacent clusters that reflect the same process as above.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/88.png" alt="Example"></p>
+<h4 id="Belief-Propagation-Algorithms"><a href="#Belief-Propagation-Algorithms" class="headerlink" title=" Belief Propagation Algorithms"></a><a name="belief_propagation_algorithms"></a> Belief Propagation Algorithms</h4><h5 id="Message-Passing-in-Cluster-Graphs"><a href="#Message-Passing-in-Cluster-Graphs" class="headerlink" title=" Message Passing in Cluster Graphs"></a><a name="message_passing_in_cluster_graphs"></a> Message Passing in Cluster Graphs</h5><p>Build a cluster graph:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/86.png" alt="Example"><br>Passing Messages:<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/87.png" alt="Example"><br>Each cluster is going to send messages to its adjacent clusters that reflect the same process as above.<br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/88.png" alt="Example"></p>
 <p><strong><em>Cluster Graphs (Generalisation Definition)</em></strong></p>
 <ul>
 <li><p>Undirected graph</p>
@@ -856,7 +860,7 @@
 <p><strong>Clique Tree:</strong><br>Undirected tree such that:</p>
 <ul>
 <li>nodes are clusters $C_i\subseteq{X_1…X_n}$</li>
-<li>edge between $C_i$ and $C_j$ associated with sepset $S_ij=C_i\cap C_j$<br>(For each pair of clusters $C_i$ and $C_j$, and variable $X\in C_i\cap C_j$, in the unique path between $C_i$ and $C_j$, all clusters and sepsets contain X)</li>
+<li>edge between $C<em>i$ and $C_j$ associated with sepset $S\</em>{ij}=C_i\cap C_j$<br>(For each pair of clusters $C_i$ and $C_j$, and variable $X\in C_i\cap C_j$, in the unique path between $C_i$ and $C_j$, all clusters and sepsets contain X)</li>
 </ul>
 <p><strong>More Complex Clique Tree:</strong><br><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/106.png" alt="Example"></p>
 <p><strong>Clique Tree Correctness:</strong></p>
@@ -873,11 +877,11 @@
 <h6 id="Computation"><a href="#Computation" class="headerlink" title=" Computation"></a><a name="message_passing_in_trees_computation"></a> Computation</h6><p><img src="/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/107.png" alt="Message Passing"><br>We can compute all of the messages in this entire tree in one paths in either direction. One path is from left to right and one path from right to left. In the context of chain structures, you might see this under the name <strong>forward-backward algorithm</strong>. This is very commonly used in things like the hidden Markov model and other similar chain structured representations.</p>
 <p>Once …</p>
 <p><a href="#tableofcontents">Back to Table of Contents</a></p>
-
+<h3 id="Learning"><a href="#Learning" class="headerlink" title=" Learning"></a><a name="learning"></a> Learning</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck6zp9efa00072sp06wmg1e5i" class="article-share-link">Share</a>
+      <a data-url="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/" data-id="ck6zpksuz000b4wp0ooedrlm0" class="article-share-link">Share</a>
       
         <a href="http://createmomo.github.io/2019/01/07/Probabilistic-Graphical-Models-Revision-Notes/#disqus_thread" class="article-comment-link">Comments</a>
       
